@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int n = nums.size();
+        int maxReach = 0;
+        for(int i = 0; i < n; i++) {
+            if(i > maxReach) return false;
+            maxReach = max(maxReach, i + nums[i]);
+            if(maxReach >= n - 1) return true;
+        }
+        return true;
+    }
+};
+int main() {
+    Solution sol;
+    vector<int> nums = {2,3,1,1,4};
+    if(sol.canJump(nums)) {
+        cout << "Can jump to the last index." << endl;
+    } else {
+        cout << "Cannot jump to the last index." << endl;
+    }
+}
